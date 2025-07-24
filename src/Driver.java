@@ -1,3 +1,5 @@
+import trade_department.Person;
+
 public class Driver extends Person {
 
     private String licenceType;

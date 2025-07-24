@@ -1,3 +1,5 @@
+import trade_department.Person;
+
 public class Doctor extends Person {
 
     private String specialization;

@@ -1,4 +1,6 @@
-public class Teacher extends Person{
+import trade_department.Person;
+
+public class Teacher extends Person {
     private String subject;
     public Teacher(){
         super();

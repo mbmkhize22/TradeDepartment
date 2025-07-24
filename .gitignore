@@ -29,3 +29,7 @@ TradeDepartment.iml
 
 ### Mac OS ###
 .DS_Store
+person_db_v1.db
+trade_department.db
+trade_department
+out

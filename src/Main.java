@@ -1,22 +1,91 @@
+import database_configs.PoliceDatabaseDriver;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import trade_department.Person;
+import trade_department.Police;
 
 public class Main {
     public static void main(String[] args) {
 
-        Person doctor = new Doctor("Dr. Smith", 45, "Cardiology");
-        Person driver = new Driver("John Doe", 30, "Truck");
-        Person teacher = new Teacher("Ms. Johnson", 35, "Mathematics");
-        Person student = new Student("Alice", 20, "Computer Science");
+        Scanner input = new Scanner(System.in);
 
-        ArrayList<Person> people = new ArrayList<>();
-        people.add(doctor);
-        people.add(driver);
-        people.add(teacher);
-        people.add(student);
+        int choice = 0;
+        while (choice != 6) {
+            System.out.println("***Welcome to Department of Trade and Commerce***");
+            System.out.println("What do you want to do?");
+            System.out.println("1. Police Database");
+            System.out.println("2. Doctor Database");
+            System.out.println("3. Driver Database");
+            System.out.println("4. Teacher Database");
+            System.out.println("5. Student Database");
+            System.out.println("6. Exit");
 
-        for (Person person : people) {
-            person.introduce();
+
+            try {
+                choice = input.nextInt();
+                switch (choice) {
+                    case 1 -> {
+                        PoliceDatabaseDriver policeDatabase = new PoliceDatabaseDriver();
+                        int policeChoice = 0;
+                        while (policeChoice != 5) {
+                            System.out.println("***Police Database Menu***");
+                            System.out.println("1. Add Police");
+                            System.out.println("2. View Police");
+                            System.out.println("3. Update Police");
+                            System.out.println("4. Delete Police");
+                            System.out.println("5. Back to Main Menu");
+
+                            try {
+                                policeChoice = input.nextInt();
+                                switch (policeChoice) {
+                                    case 1 -> {
+                                        System.out.println("Enter Police Name:");
+                                        String name = input.next();
+                                        System.out.println("Enter Police Age:");
+                                        int age = input.nextInt();
+                                        System.out.println("Enter Police Rank:");
+                                        String rank = input.next();
+                                        System.out.println("Enter Police Badge Number:");
+                                        String badgeNumber = input.next();
+                                        Police police = new Police(name, age, badgeNumber);
+                                        policeDatabase.addPolice(police);
+                                        System.out.println("Police added successfully!");
+                                    }
+                                    case 2 -> {
+                                        List<Police> policeList = policeDatabase.getAllPolice();
+                                        if (policeList.isEmpty()) {
+                                            System.out.println("No police records found.");
+                                        } else {
+                                            for (Police p : policeList) {
+                                                System.out.println(p.toString());
+                                            }
+                                        }
+                                    }
+                                    case 3 -> System.out.println("Police Update functionality not implemented yet.");
+                                    case 4 -> System.out.println("Police Delete functionality not implemented yet.");
+                                    case 5 -> System.out.println("Returning to main menu.");
+                                    default -> System.out.println("Invalid choice. Please select a number between 1 and 5.");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input. Please enter a number between 1 and 5.");
+                                input.next(); // Clear the invalid input
+                            }
+                        }
+                    }
+                    case 2 -> System.out.println("Doctor Database functionality not implemented yet.");
+                    case 3 -> System.out.println("Driver Database functionality not implemented yet.");
+                    case 4 -> System.out.println("Teacher Database functionality not implemented yet.");
+                    case 5 -> System.out.println("Student Database functionality not implemented yet.");
+                    case 6 -> System.out.println("Exiting the program. thank you for using our application");
+                    default -> System.out.println("Invalid choice. Please select a number between 1 and 6.");
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a number between 1 and 6.");
+                input.next(); // Clear the invalid input
+                continue;
+            }
         }
+
     }
 }

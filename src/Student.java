@@ -1,4 +1,6 @@
-public class Student extends Person{
+import trade_department.Person;
+
+public class Student extends Person {
 
         private String grade;
         public Student(){
