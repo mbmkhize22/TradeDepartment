@@ -2,9 +2,21 @@ public class Driver extends Person {
 
     private String licenceType;
 
+    public Driver(){
+        super();
+        this.licenceType="";
+    }
+
     public Driver(String name, int age, String licenceType) {
         super(name, age);
         this.licenceType = licenceType;
+    }
+
+    public String getLicenceType(String licenceType){
+        return licenceType;
+    }
+    public void setLicenceType(String licenceType){
+        this.licenceType=licenceType;
     }
 
     @Override
