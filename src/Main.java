@@ -15,10 +15,10 @@ public class Main {
             System.out.println("***Welcome to Department of Trade and Commerce***");
             System.out.println("What do you want to do?");
             System.out.println("1. Police Database");
-            System.out.println("2. Doctor Database");
-            System.out.println("3. Driver Database");
-            System.out.println("4. Teacher Database");
-            System.out.println("5. Student Database");
+            System.out.println("2. trade_department.Doctor Database");
+            System.out.println("3. trade_department.Driver Database");
+            System.out.println("4. trade_department.Teacher Database");
+            System.out.println("5. trade_department.Student Database");
             System.out.println("6. Exit");
 
 
@@ -73,10 +73,10 @@ public class Main {
                             }
                         }
                     }
-                    case 2 -> System.out.println("Doctor Database functionality not implemented yet.");
-                    case 3 -> System.out.println("Driver Database functionality not implemented yet.");
-                    case 4 -> System.out.println("Teacher Database functionality not implemented yet.");
-                    case 5 -> System.out.println("Student Database functionality not implemented yet.");
+                    case 2 -> System.out.println("trade_department.Doctor Database functionality not implemented yet.");
+                    case 3 -> System.out.println("trade_department.Driver Database functionality not implemented yet.");
+                    case 4 -> System.out.println("trade_department.Teacher Database functionality not implemented yet.");
+                    case 5 -> System.out.println("trade_department.Student Database functionality not implemented yet.");
                     case 6 -> System.out.println("Exiting the program. thank you for using our application");
                     default -> System.out.println("Invalid choice. Please select a number between 1 and 6.");
                 }
