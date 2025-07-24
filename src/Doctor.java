@@ -1,25 +1,23 @@
-
-
 public class Doctor extends Person {
 
     private String specialization;
 
-public Doctor(){
+public Doctor() {
     super();
-    this.specialization="";
+    this.specialization = "";
 }
 
     public Doctor(String name, int age, String specialization) {
         super(name, age);
-        String Specialization=this.specialization;
+        this.specialization=specialization;
     }
 
     public String getSpecialization(){
-    return specialization;
+        return specialization;
     }
-public void setSpecialization(String specialization ){
+    public void setSpecialization(String specialization ){
     this.specialization=specialization;
-}
+    }
     @Override
     public void introduce() {
         super.introduce();
