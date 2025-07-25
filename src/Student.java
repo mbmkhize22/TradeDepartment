@@ -11,8 +11,8 @@ public class Student extends Person{
         }
         @Override
         public void introduce(){
-            System.out.println("Student's grade : "+grade);
-        }
+            System.out.println("I'm Orton and I scored an  : "+grade+" in Mathematics.");}
+
         @Override
         public String toFileString(){return "grade : "+grade;}
 

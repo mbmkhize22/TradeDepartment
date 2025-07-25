@@ -10,7 +10,7 @@ public class Teacher extends Person{
     }
     @Override
     public void introduce(){
-        System.out.println("Subject : "+subject);
+        System.out.println("Hey I'm Cena and I'll be your: "+subject+" teacher.");
     }
     @Override
     public String toFileString(){return "Subject : "+subject;}
