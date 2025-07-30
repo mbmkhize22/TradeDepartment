@@ -1,32 +1,39 @@
-public class Driver extends Person {
+import trade_department.Person;
 
-    private String licenceType;
+public class Driver extends Person {
+    private String license;
 
     public Driver(){
         super();
-        this.licenceType="";
+        this.license=" ";
     }
 
-    public Driver(String name, int age, String licenceType) {
+    public Driver(String name, int age, String license){
         super(name, age);
-        this.licenceType = licenceType;
+        this.license=license;
     }
 
-    public String getLicenceType(String licenceType){
-        return licenceType;
+    public String getlicense(String license){
+        return this.license;
     }
-    public void setLicenceType(String licenceType){
-        this.licenceType=licenceType;
+
+    public void setLicense(String License){
+        this.license=license;
     }
 
     @Override
     public void introduce(){
         super.introduce();
-        System.out.println("I am a driver with a " + licenceType + " license.");
+        System.out.println("Hi, my license is"+ license);
     }
+
     @Override
     public String toFileString(){
-        return super.toFileString()+ ", License type: "+licenceType;
+        return super.toFileString() + "License: " + license;
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() + " License: " + license;
     }
 }
-

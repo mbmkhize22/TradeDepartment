@@ -1,4 +1,7 @@
-public class Teacher extends Person{
+import trade_department.Person;
+import trade_department.Police;
+
+public class Teacher extends Person {
     private String subject;
     public Teacher(){
         super();
@@ -10,7 +13,7 @@ public class Teacher extends Person{
     }
     @Override
     public void introduce(){
-        System.out.println("Subject : "+subject);
+        System.out.println("Hey I'm Cena and I'll be your: "+subject+" teacher.");
     }
     @Override
     public String toFileString(){return "Subject : "+subject;}
