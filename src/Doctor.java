@@ -1,40 +1,40 @@
 import trade_department.Person;
 
 public class Doctor extends Person {
-    private String doctor;
+    private String specialization;
 
     public Doctor(){
         super();
-        this.doctor=" ";
+        this.specialization=" ";
     }
 
-    public Doctor(String name, int age, String doctor){
+    public Doctor(String name, int age, String specialization){
         super(name, age);
-        this.doctor=doctor;
+        this.specialization=specialization;
     }
 
-    public String getDoctor(String doctor){
-        return this.doctor;
+    public String getSpecialization(String specialization){
+        return this.specialization;
     }
 
-    public void setDoctor(String doctor){
-        this.doctor=doctor;
+    public void setSpecialization(String specialization){
+        this.specialization=specialization;
     }
 
     @Override
     public void introduce(){
         super.introduce();
-        System.out.println("Hi, I am a doctor specializing in "+ doctor);
+        System.out.println("Hi, I am a doctor specializing in "+ specialization);
     }
 
     @Override
     public String toFileString(){
-        return super.toFileString() + "Doctor: " + doctor;
+        return super.toFileString() + "Doctor: " + specialization;
     }
 
     @Override
     public String toString(){
-        return super.toString() + " Doctor: " + doctor;
+        return super.toString() + " Doctor: " + specialization;
     }
 }
 
