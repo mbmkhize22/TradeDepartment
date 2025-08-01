@@ -1,11 +1,13 @@
 package database_configs;
 
+import trade_department.Teacher;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherDatabase {
-
+public TeacherDatabase(){createTeacherTable();}
    private void createTeacherTable(){
 
      String query="CREATE TABLE IF NOT EXISTS teacher(teacher_id int,name varchar(30),age int,subject varchar(50))";

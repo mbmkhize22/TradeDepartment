@@ -1,11 +1,10 @@
 import database_configs.PoliceDatabaseDriver;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
-import database_configs.Teacher;
+import trade_department.Teacher;
 import database_configs.TeacherDatabase;
-import trade_department.Person;
 import trade_department.Police;
 
 public class Main {
@@ -90,7 +89,7 @@ public class Main {
                             System.out.println(menu);}
 
                         int menuChoice;
-                        System.out.print(" ADD teacher: ");
+                        System.out.print("select your Choice: ");
                         menuChoice = scanner.nextInt();
                         while (menuChoice <= 0||menuChoice>5) {
                             System.out.println("INVALID INPUT SELECT BETWEEN 1-5");
@@ -99,7 +98,7 @@ public class Main {
                             for (String menu : menus) {
                                 System.out.println(menu);}
 
-                            System.out.print(" ADD teacher: ");
+                            System.out.print("select your choice: ");
                             menuChoice = scanner.nextInt();
 
                         }
@@ -119,6 +118,8 @@ public class Main {
                             Teacher teacher1 = new Teacher(teacher_id, name, age, subject);
                             teacherDatabase.addTeacher(teacher1);
 
+                        } else if (menuChoice==2) {
+                            
                         }
 
 
