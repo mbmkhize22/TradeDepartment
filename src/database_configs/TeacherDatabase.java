@@ -3,6 +3,7 @@ package database_configs;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import trade_department.Teacher;
 
 public class TeacherDatabase {
 public TeacherDatabase(){createTeacherTable();}

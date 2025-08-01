@@ -3,9 +3,10 @@ import database_configs.PoliceDatabaseDriver;
 import java.util.List;
 import java.util.Scanner;
 
-import database_configs.Teacher;
+import trade_department.Teacher;
 import database_configs.TeacherDatabase;
 import trade_department.Police;
+import trade_department.Teacher;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +20,7 @@ public class Main {
             System.out.println("1. Police Database");
             System.out.println("2. trade_department.Doctor Database");
             System.out.println("3. trade_department.Driver Database");
-            System.out.println("4. database_configs.Teacher Database");
+            System.out.println("4. database_configs.trade_department.Teacher Database");
             System.out.println("5. trade_department.Student Database");
             System.out.println("6. Exit");
 
@@ -79,8 +80,10 @@ public class Main {
                     case 3 -> System.out.println("trade_department.Driver Database functionality not implemented yet.");
                     case 4 ->{
                         TeacherDatabase teacherDatabase=new TeacherDatabase();
-                     Scanner scanner=new Scanner(System.in);
-                    String[]menus={"1. Add Teacher","2. View Teacher","3. Update Teacher","4. Delete Teacher","5. Back to Main Menu"};
+                        Scanner scanner=new Scanner(System.in);
+                        String[]menus={"1. Add Teacher","2. View Teacher",
+                                       "3. Update Teacher","4. Delete Teacher",
+                                       "5. Back to Main Menu"};
 
 
                         System.out.println("***Teacher Database Menu***");
@@ -115,8 +118,8 @@ public class Main {
                             scanner.nextLine();
                             System.out.print("enter subject: ");
                             String subject = scanner.nextLine();
-                            Teacher teacher1 = new Teacher(teacher_id, name, age, subject);
-                            teacherDatabase.addTeacher(teacher1);
+                            Teacher teacher= new Teacher(teacher_id, name, age, subject);
+                            teacherDatabase.addTeacher(teacher);
 
                         } else if (menuChoice==2) {
                             
