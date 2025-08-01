@@ -1,7 +1,5 @@
 package database_configs;
 
-import trade_department.Teacher;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

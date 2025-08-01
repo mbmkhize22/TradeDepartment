@@ -3,7 +3,7 @@ import database_configs.PoliceDatabaseDriver;
 import java.util.List;
 import java.util.Scanner;
 
-import trade_department.Teacher;
+import database_configs.Teacher;
 import database_configs.TeacherDatabase;
 import trade_department.Police;
 
@@ -19,7 +19,7 @@ public class Main {
             System.out.println("1. Police Database");
             System.out.println("2. trade_department.Doctor Database");
             System.out.println("3. trade_department.Driver Database");
-            System.out.println("4. trade_department.Teacher Database");
+            System.out.println("4. database_configs.Teacher Database");
             System.out.println("5. trade_department.Student Database");
             System.out.println("6. Exit");
 
