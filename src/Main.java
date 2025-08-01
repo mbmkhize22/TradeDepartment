@@ -2,6 +2,9 @@ import database_configs.PoliceDatabaseDriver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import database_configs.Teacher;
+import database_configs.TeacherDatabase;
 import trade_department.Person;
 import trade_department.Police;
 
@@ -75,7 +78,41 @@ public class Main {
                     }
                     case 2 -> System.out.println("trade_department.Doctor Database functionality not implemented yet.");
                     case 3 -> System.out.println("trade_department.Driver Database functionality not implemented yet.");
-                    case 4 -> System.out.println("trade_department.Teacher Database functionality not implemented yet.");
+                    case 4 ->{
+                        TeacherDatabase teacherDatabase=new TeacherDatabase();
+                     Scanner scanner=new Scanner(System.in);
+                    String[]menus={"1. Add Teacher","2. View Teacher","3. Update Teacher","4. Delete Teacher","5. Back to Main Menu"};
+
+
+                        System.out.println("***Teacher Database Menu***");
+
+                        for (String menu : menus) {
+                            System.out.println(menu);}
+
+                        int menuChoice;
+                        System.out.println(" ADD teacher");
+                        menuChoice = scanner.nextInt();
+                        if (menuChoice == 1) {
+
+                            System.out.print("enter teacher_id: ");
+                            int teacher_id = scanner.nextInt();
+                            scanner.nextLine();
+                            System.out.print("enter name: ");
+                            String name = scanner.nextLine();
+                            System.out.print("enter age: ");
+                            int age = scanner.nextInt();
+                            scanner.nextLine();
+                            System.out.print("enter subject: ");
+                            String subject = scanner.nextLine();
+                            Teacher teacher1 = new Teacher(teacher_id, name, age, subject);
+                            teacherDatabase.addTeacher(teacher1);
+
+                        }
+                        if (menuChoice == 2) {
+
+                        }
+                    }
+
                     case 5 -> System.out.println("trade_department.Student Database functionality not implemented yet.");
                     case 6 -> System.out.println("Exiting the program. thank you for using our application");
                     default -> System.out.println("Invalid choice. Please select a number between 1 and 6.");
