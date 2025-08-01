@@ -90,8 +90,20 @@ public class Main {
                             System.out.println(menu);}
 
                         int menuChoice;
-                        System.out.println(" ADD teacher");
+                        System.out.print(" ADD teacher: ");
                         menuChoice = scanner.nextInt();
+                        while (menuChoice <= 0||menuChoice>5) {
+                            System.out.println("INVALID INPUT SELECT BETWEEN 1-5");
+                            System.out.println("***Teacher Database Menu***");
+
+                            for (String menu : menus) {
+                                System.out.println(menu);}
+
+                            System.out.print(" ADD teacher: ");
+                            menuChoice = scanner.nextInt();
+
+                        }
+
                         if (menuChoice == 1) {
 
                             System.out.print("enter teacher_id: ");
@@ -108,9 +120,8 @@ public class Main {
                             teacherDatabase.addTeacher(teacher1);
 
                         }
-                        if (menuChoice == 2) {
 
-                        }
+
                     }
 
                     case 5 -> System.out.println("trade_department.Student Database functionality not implemented yet.");

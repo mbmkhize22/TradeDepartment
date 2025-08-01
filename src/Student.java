@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-  public class Student extends Person{
-=======
+
 import trade_department.Person;
 
 public class Student extends Person {
->>>>>>> 698b1fb1ee76ae968da883c87ea15e540d69e53a
+
 
         private String grade;
         public Student(){
