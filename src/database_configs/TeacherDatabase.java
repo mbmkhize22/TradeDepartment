@@ -1,5 +1,4 @@
 package database_configs;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,15 +43,16 @@ public void addTeacher(Teacher teacher){
    List<Teacher> teacher=new ArrayList<>();
        String query="SELECT * FROM teacher";
        try(Connection connection=DatabaseConfig.getConnection();
-           Statement statement= connection.createStatement()){
-           ResultSet resultSet= statement.executeQuery(query);
+          PreparedStatement preparedStatement= connection.prepareStatement(query)){
+           ResultSet resultSet=preparedStatement.executeQuery();
            while (resultSet.next()){
-               int teacher_id= resultSet.getInt("teacher_id");
-               String name= resultSet.getString("name");
-               int age= resultSet.getInt("age");
-               String subject= resultSet.getString("subject");
-               teacher.add(new Teacher(teacher_id,name,age,subject));
-          }
+               teacher.add(new Teacher(
+               resultSet.getInt("teacher_id"),
+               resultSet.getString("name"),
+               resultSet.getInt("age"),
+               resultSet.getString("subject")
+          ));
+           }
        }
        catch (SQLException e){
            e.printStackTrace();
@@ -72,7 +72,8 @@ public void addTeacher(Teacher teacher){
                 String name= resultSet.getString("name");
                 int age= resultSet.getInt("age");
                 String subject= resultSet.getString("subject");
-                teacher=new Teacher(teacher_id,name,age,subject);
+//                teacher=new Teacher(teacher_id,name,age,subject);
+                connection.close();
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -90,17 +91,17 @@ public void addTeacher(Teacher teacher){
           preparedStatement.setInt(3,teacher.getAge());
           preparedStatement.setString(4,teacher.getSubject());
           rowUpdated=preparedStatement.executeUpdate()>0;
-
+          connection.close();
        }
        return rowUpdated;
   }
   public  void deleteTeacher()  {
 
-      String query = "DELETE FROM teacher WHERE teacher_id=4";
+      String query = "DELETE FROM teacher WHERE teacher_id=1";
       try (Connection connection = DatabaseConfig.getConnection();
            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
            preparedStatement.executeUpdate();
-
+           connection.close();
 
 
       }catch (SQLException e) {

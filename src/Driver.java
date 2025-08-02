@@ -17,7 +17,7 @@ public class Driver extends Person {
         return this.license;
     }
 
-    public void setLicense(String License){
+    public void setLicense(String license){
         this.license=license;
     }
 

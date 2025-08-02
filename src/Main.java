@@ -1,5 +1,6 @@
 import database_configs.PoliceDatabaseDriver;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,6 +22,7 @@ public class Main {
             System.out.println("2. trade_department.Doctor Database");
             System.out.println("3. trade_department.Driver Database");
             System.out.println("4. database_configs.trade_department.Teacher Database");
+            System.out.println("4. trade_department.Teacher Database");
             System.out.println("5. trade_department.Student Database");
             System.out.println("6. Exit");
 
@@ -106,7 +108,7 @@ public class Main {
 
                         }
 
-                        if (menuChoice == 1) {
+                        while (menuChoice == 1) {
 
                             System.out.print("enter teacher_id: ");
                             int teacher_id = scanner.nextInt();
@@ -121,8 +123,35 @@ public class Main {
                             Teacher teacher= new Teacher(teacher_id, name, age, subject);
                             teacherDatabase.addTeacher(teacher);
 
-                        } else if (menuChoice==2) {
-                            
+                            System.out.println("***Teacher Database Menu***");
+
+                            for (String menu : menus) {
+                                System.out.println(menu);}
+
+                            System.out.print("select your choice: ");
+                            menuChoice = scanner.nextInt();
+
+                        }
+                        while(menuChoice==2) {
+
+                            List<Teacher> teacherList =teacherDatabase.selectAllTeacher();
+                            if (teacherList.isEmpty()){
+                                System.out.println("Teacher records NOT FOUND");
+                            }
+                            else {
+                                for (Teacher teacher : teacherList) {
+                                    System.out.println(teacher);
+                                }
+                            }
+                            System.out.println("***Teacher Database Menu***");
+
+                            for (String menu : menus) {
+                                System.out.println(menu);}
+
+                            System.out.print("select your choice: ");
+                            menuChoice = scanner.nextInt();
+
+
                         }
 
 
