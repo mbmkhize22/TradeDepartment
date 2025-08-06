@@ -1,16 +1,17 @@
 import database_configs.PoliceDatabaseDriver;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
 import trade_department.Teacher;
 import database_configs.TeacherDatabase;
 import trade_department.Police;
-import trade_department.Teacher;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+
+
 
         Scanner input = new Scanner(System.in);
 
@@ -21,7 +22,6 @@ public class Main {
             System.out.println("1. Police Database");
             System.out.println("2. trade_department.Doctor Database");
             System.out.println("3. trade_department.Driver Database");
-            System.out.println("4. database_configs.trade_department.Teacher Database");
             System.out.println("4. trade_department.Teacher Database");
             System.out.println("5. trade_department.Student Database");
             System.out.println("6. Exit");
@@ -80,81 +80,83 @@ public class Main {
                     }
                     case 2 -> System.out.println("trade_department.Doctor Database functionality not implemented yet.");
                     case 3 -> System.out.println("trade_department.Driver Database functionality not implemented yet.");
-                    case 4 ->{
-                        TeacherDatabase teacherDatabase=new TeacherDatabase();
-                        Scanner scanner=new Scanner(System.in);
-                        String[]menus={"1. Add Teacher","2. View Teacher",
-                                       "3. Update Teacher","4. Delete Teacher",
-                                       "5. Back to Main Menu"};
-
-
-                        System.out.println("***Teacher Database Menu***");
-
-                        for (String menu : menus) {
-                            System.out.println(menu);}
+                    case 4 -> {
+                        TeacherDatabase teacherDatabase = new TeacherDatabase();
+                        Scanner scanner = new Scanner(System.in);
+                        String[] menus = {"1. Add Teacher", "2. View Teacher",
+                                "3. Update Teacher", "4. Delete Teacher",
+                                "5. Back to Main Menu"};
 
                         int menuChoice;
-                        System.out.print("select your Choice: ");
-                        menuChoice = scanner.nextInt();
-                        while (menuChoice <= 0||menuChoice>5) {
-                            System.out.println("INVALID INPUT SELECT BETWEEN 1-5");
+                        do {
                             System.out.println("***Teacher Database Menu***");
 
                             for (String menu : menus) {
-                                System.out.println(menu);}
-
-                            System.out.print("select your choice: ");
-                            menuChoice = scanner.nextInt();
-
-                        }
-
-                        while (menuChoice == 1) {
-
-                            System.out.print("enter teacher_id: ");
-                            int teacher_id = scanner.nextInt();
-                            scanner.nextLine();
-                            System.out.print("enter name: ");
-                            String name = scanner.nextLine();
-                            System.out.print("enter age: ");
-                            int age = scanner.nextInt();
-                            scanner.nextLine();
-                            System.out.print("enter subject: ");
-                            String subject = scanner.nextLine();
-                            Teacher teacher= new Teacher(teacher_id, name, age, subject);
-                            teacherDatabase.addTeacher(teacher);
-
-                            System.out.println("***Teacher Database Menu***");
-
-                            for (String menu : menus) {
-                                System.out.println(menu);}
-
-                            System.out.print("select your choice: ");
-                            menuChoice = scanner.nextInt();
-
-                        }
-                        while(menuChoice==2) {
-
-                            List<Teacher> teacherList =teacherDatabase.selectAllTeacher();
-                            if (teacherList.isEmpty()){
-                                System.out.println("Teacher records NOT FOUND");
+                                System.out.println(menu);
                             }
-                            else {
-                                for (Teacher teacher : teacherList) {
-                                    System.out.println(teacher);
+
+                            System.out.print("select your Choice: ");
+                            menuChoice = scanner.nextInt();
+                            while (menuChoice <= 0 || menuChoice > 5) {
+                                System.out.println("INVALID INPUT SELECT BETWEEN 1-5");
+                                 break;
+                            }
+
+                            while (menuChoice == 1) {
+
+                                System.out.print("enter teacher_id: ");
+                                int teacher_id = scanner.nextInt();
+                                scanner.nextLine();
+                                System.out.print("enter name: ");
+                                String name = scanner.nextLine();
+                                System.out.print("enter age: ");
+                                int age = scanner.nextInt();
+                                scanner.nextLine();
+                                System.out.print("enter subject: ");
+                                String subject = scanner.nextLine();
+                                Teacher teacher = new Teacher(teacher_id, name, age, subject);
+                                teacherDatabase.addTeacher(teacher);
+                                break;
+
+                            }
+                            while (menuChoice == 2) {
+
+                                List<Teacher> teacherList = teacherDatabase.selectAllTeacher();
+                                if (teacherList.isEmpty()) {
+                                    System.out.println("Teacher records NOT FOUND");
+                                } else {
+                                    for (Teacher teacher : teacherList) {
+                                        System.out.println(teacher);
+                                    }
                                 }
+                                break;
+
+
                             }
-                            System.out.println("***Teacher Database Menu***");
+                            while (menuChoice == 3) {
+                                System.out.print("id: ");
+                                int teacher_id = scanner.nextInt();
+                                scanner.nextLine();
+                                System.out.print("name: ");
+                                String name = scanner.nextLine();
+                                System.out.print("age: ");
+                                int age = scanner.nextInt();
+                                scanner.nextLine();
+                                System.out.print("subject: ");
+                                String subject = scanner.nextLine();
+                                teacherDatabase.updateTeacher(teacher_id, name, age, subject);
+                                break;
+                            }
+                            while (menuChoice == 4) {
+                                System.out.print("enter teacher_id : ");
+                                int teacherId = scanner.nextInt();
+                                teacherDatabase.deleteTeacher(teacherId);
+                                break;
 
-                            for (String menu : menus) {
-                                System.out.println(menu);}
-
-                            System.out.print("select your choice: ");
-                            menuChoice = scanner.nextInt();
+                            }
 
 
-                        }
-
-
+                        } while (menuChoice != 5);
                     }
 
                     case 5 -> System.out.println("trade_department.Student Database functionality not implemented yet.");

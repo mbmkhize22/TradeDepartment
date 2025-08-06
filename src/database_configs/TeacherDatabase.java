@@ -72,7 +72,7 @@ public void addTeacher(Teacher teacher){
                 String name= resultSet.getString("name");
                 int age= resultSet.getInt("age");
                 String subject= resultSet.getString("subject");
-//                teacher=new Teacher(teacher_id,name,age,subject);
+
                 connection.close();
             }
         }catch (SQLException e){
@@ -81,26 +81,32 @@ public void addTeacher(Teacher teacher){
         return teacher;
     }
 
-  public  boolean updateTeacher(Teacher teacher) throws SQLException {
-       boolean rowUpdated;
-       String query="UPDATE teacher SET teacher_id=? name=? age=? subject=? Java WHERE teacher_id=1";
+  public void updateTeacher(int teacher_id, String name, int age, String subject) {
+
+       String query="UPDATE teacher SET  name = ?, age = ?, subject = ?  WHERE teacher_id = ?";
        try(Connection connection=DatabaseConfig.getConnection();
        PreparedStatement preparedStatement= connection.prepareStatement(query)){
-          preparedStatement.setInt(1,teacher.getTeacher_id());
-          preparedStatement.setString(2,teacher.getName());
-          preparedStatement.setInt(3,teacher.getAge());
-          preparedStatement.setString(4,teacher.getSubject());
-          rowUpdated=preparedStatement.executeUpdate()>0;
+          preparedStatement.setString(1,name);
+          preparedStatement.setInt(2,age);
+          preparedStatement.setString(3,subject);
+          preparedStatement.setInt(4,teacher_id);
+          int rowsUpdated=preparedStatement.executeUpdate();
+           System.out.println(rowsUpdated+" row(s) updated");
           connection.close();
        }
-       return rowUpdated;
-  }
-  public  void deleteTeacher()  {
+       catch (SQLException e){
+           e.printStackTrace();
+       }
 
-      String query = "DELETE FROM teacher WHERE teacher_id=1";
+  }
+  public  void deleteTeacher(int teacherId)  {
+
+      String query = "DELETE FROM teacher WHERE teacher_id=?";
       try (Connection connection = DatabaseConfig.getConnection();
            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-           preparedStatement.executeUpdate();
+          preparedStatement.setInt(1,teacherId);
+          int rowsDeleted= preparedStatement.executeUpdate();
+          System.out.println(rowsDeleted+" row(s) deleted" );
            connection.close();
 
 
