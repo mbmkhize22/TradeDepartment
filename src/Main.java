@@ -99,66 +99,62 @@ public class Main {
                             menuChoice = scanner.nextInt();
                             while (menuChoice <= 0 || menuChoice > 5) {
                                 System.out.println("INVALID INPUT SELECT BETWEEN 1-5");
-                                 break;
-                            }
-
-                            while (menuChoice == 1) {
-
-                                System.out.print("enter teacher_id: ");
-                                int teacher_id = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.print("enter name: ");
-                                String name = scanner.nextLine();
-                                System.out.print("enter age: ");
-                                int age = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.print("enter subject: ");
-                                String subject = scanner.nextLine();
-                                Teacher teacher = new Teacher(teacher_id, name, age, subject);
-                                teacherDatabase.addTeacher(teacher);
                                 break;
-
                             }
-                            while (menuChoice == 2) {
 
-                                List<Teacher> teacherList = teacherDatabase.selectAllTeacher();
-                                if (teacherList.isEmpty()) {
-                                    System.out.println("Teacher records NOT FOUND");
-                                } else {
-                                    for (Teacher teacher : teacherList) {
-                                        System.out.println(teacher);
+                            switch (menuChoice) {
+
+                                case (1) -> {
+                                    System.out.print("enter teacher_id: ");
+                                    int teacher_id = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.print("enter name: ");
+                                    String name = scanner.nextLine();
+                                    System.out.print("enter age: ");
+                                    int age = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.print("enter subject: ");
+                                    String subject = scanner.nextLine();
+                                    Teacher teacher = new Teacher(teacher_id, name, age, subject);
+                                    teacherDatabase.addTeacher(teacher);
+                                }
+
+                                case (2) -> {
+
+                                    List<Teacher> teacherList = teacherDatabase.selectAllTeacher();
+                                    if (teacherList.isEmpty()) {
+                                        System.out.println("Teacher records NOT FOUND");
+                                    } else {
+                                        for (Teacher teacher : teacherList) {
+                                            System.out.println(teacher);
+                                        }
                                     }
                                 }
-                                break;
 
 
+                                case (3) -> {
+                                    System.out.print("id: ");
+                                    int teacher_id = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.print("name: ");
+                                    String name = scanner.nextLine();
+                                    System.out.print("age: ");
+                                    int age = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.print("subject: ");
+                                    String subject = scanner.nextLine();
+                                    teacherDatabase.updateTeacher(teacher_id, name, age, subject);
+                                }
+
+                                case (4) -> {
+                                    System.out.print("enter teacher_id : ");
+                                    int teacherId = scanner.nextInt();
+                                    teacherDatabase.deleteTeacher(teacherId);
+                                }
                             }
-                            while (menuChoice == 3) {
-                                System.out.print("id: ");
-                                int teacher_id = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.print("name: ");
-                                String name = scanner.nextLine();
-                                System.out.print("age: ");
-                                int age = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.print("subject: ");
-                                String subject = scanner.nextLine();
-                                teacherDatabase.updateTeacher(teacher_id, name, age, subject);
-                                break;
-                            }
-                            while (menuChoice == 4) {
-                                System.out.print("enter teacher_id : ");
-                                int teacherId = scanner.nextInt();
-                                teacherDatabase.deleteTeacher(teacherId);
-                                break;
-
-                            }
-
 
                         } while (menuChoice != 5);
                     }
-
                     case 5 -> System.out.println("trade_department.Student Database functionality not implemented yet.");
                     case 6 -> System.out.println("Exiting the program. thank you for using our application");
                     default -> System.out.println("Invalid choice. Please select a number between 1 and 6.");
