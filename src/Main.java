@@ -3,10 +3,10 @@ import database_configs.PoliceDatabaseDriver;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
-
-import trade_department.Teacher;
 import database_configs.TeacherDatabase;
 import trade_department.Police;
+import trade_department.Teacher;
+
 
 public class Main {
     public static void main(String[] args) throws SQLException {
