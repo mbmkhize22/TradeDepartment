@@ -3,6 +3,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import trade_department.Teacher;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 
 public class TeacherDatabase {
 public TeacherDatabase(){createTeacherTable();}
