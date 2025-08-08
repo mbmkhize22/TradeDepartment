@@ -1,5 +1,4 @@
 import database_configs.PoliceDatabaseDriver;
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
