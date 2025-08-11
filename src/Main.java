@@ -6,6 +6,8 @@ import database_configs.TeacherDatabase;
 import trade_department.Police;
 import trade_department.Teacher;
 
+import javax.swing.*;
+
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -80,8 +82,10 @@ public class Main {
                     case 2 -> System.out.println("trade_department.Doctor Database functionality not implemented yet.");
                     case 3 -> System.out.println("trade_department.Driver Database functionality not implemented yet.");
                     case 4 -> {
+
                         TeacherDatabase teacherDatabase = new TeacherDatabase();
                         Scanner scanner = new Scanner(System.in);
+
                         String[] menus = {"1. Add Teacher", "2. View Teacher",
                                 "3. Update Teacher", "4. Delete Teacher",
                                 "5. Back to Main Menu"};
@@ -96,14 +100,11 @@ public class Main {
 
                             System.out.print("select your Choice: ");
                             menuChoice = scanner.nextInt();
-                            while (menuChoice <= 0 || menuChoice > 5) {
-                                System.out.println("INVALID INPUT SELECT BETWEEN 1-5");
-                                break;
-                            }
+
 
                             switch (menuChoice) {
 
-                                case (1) -> {
+                                case 1-> {
                                     System.out.print("enter teacher_id: ");
                                     int teacher_id = scanner.nextInt();
                                     scanner.nextLine();
@@ -118,7 +119,7 @@ public class Main {
                                     teacherDatabase.addTeacher(teacher);
                                 }
 
-                                case (2) -> {
+                                case 2-> {
 
                                     List<Teacher> teacherList = teacherDatabase.selectAllTeacher();
                                     if (teacherList.isEmpty()) {
@@ -131,7 +132,7 @@ public class Main {
                                 }
 
 
-                                case (3) -> {
+                                case 3 -> {
                                     System.out.print("id: ");
                                     int teacher_id = scanner.nextInt();
                                     scanner.nextLine();
@@ -145,10 +146,17 @@ public class Main {
                                     teacherDatabase.updateTeacher(teacher_id, name, age, subject);
                                 }
 
-                                case (4) -> {
+                                case 4 -> {
                                     System.out.print("enter teacher_id : ");
                                     int teacherId = scanner.nextInt();
                                     teacherDatabase.deleteTeacher(teacherId);
+                                }
+                                default -> {
+                                   if (menuChoice <= 0 || menuChoice > 5) {
+                                        System.out.println("INVALID INPUT SELECT BETWEEN 1-5");
+                                        break;
+                                    }
+
                                 }
                             }
 
